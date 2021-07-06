@@ -1,0 +1,38 @@
+
+{% comment %}
+    Requires the following arguments:
+
+    - settings
+    - id
+
+{% endcomment %}
+<style>
+    .hero__content {
+        text-align: {{ settings.alignment }};
+    }
+    .hero--{{ id }} {
+        background-image: url( {{ settings.small_image | img_url: '600px'}} );
+    }
+
+    @media (min-width: 992px) {
+        .hero--{{ id }} {
+        background-image: url( {{ settings.small_image | img_url: 'master'}} );
+        }
+    }
+
+</style>
+
+<section class="hero hero--{{ id }}">
+    <div class="hero__content hero__content--{{ settings.alignment }}">
+        <h2 class="hero__heading text_alignment"> {{ settings.heading }} </h2>
+        <p class="hero__copy text_alignment"> {{ settings.body }} </p>
+        <a href="{{ settings.link_url }}" class="hero__link text_alignment"> {{ settings.link_text }} </a>
+    </div>
+</section>
+
+
+
+
+<script>
+    console.log( "{{ settings.alignment }} ");
+</script>
